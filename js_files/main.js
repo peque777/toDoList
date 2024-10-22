@@ -160,7 +160,7 @@ function getSavedTasks() {
     }
 }
 
-setInterval(checkDueDates, 43200000 ); //12hs
+setInterval(checkDueDates, 10000 ); //12hs
 
 getSavedTasks();
 
