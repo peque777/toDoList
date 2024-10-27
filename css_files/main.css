@@ -9,7 +9,7 @@ body{
     flex-direction: column;
     background: linear-gradient(#0267C1,#30C5FF);
     font-family: "Oswald", sans-serif;
-    overflow: hidden;
+    overflow-y: auto;
 }
 hr{
     width: 70vw;
