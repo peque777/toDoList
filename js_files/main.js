@@ -75,8 +75,8 @@ function addTask() {
 
 function finishTask(event) {
     let taskElement = event.target.parentElement;
-    let taskText = taskElement.innerText.replace(" due date: ✔", "");
-    let taskIndex = taskNames.indexOf(taskText.split(" due date: ")[0]);
+    let taskName = taskElement.previousElementSibling.textContent.split(" (")[0]; // Obtiene solo el nombre de la tarea sin el texto entre paréntesis
+    let taskIndex = taskNames.indexOf(taskName);
 
     if (taskIndex > -1) {
         completedTasks.push({
@@ -96,12 +96,14 @@ function finishTask(event) {
     if (nextElement && nextElement.tagName === "HR") {
         nextElement.remove();
     }
+    taskElement.previousElementSibling.remove(); // Elimina también el nombre de la tarea
     taskElement.remove();
 
     if (taskNames.length === 0) {
         taskList.innerHTML = '<p id="noTasksMessage">No due tasks</p>';
     }
 }
+
 
 function checkDueDates() {
     let today = new Date();

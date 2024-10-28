@@ -70,7 +70,7 @@ input{
     height: 5vh;
     display: flex;
     flex-direction: row-reverse;
-    padding-bottom: 30px;
+    padding-bottom: 2.5vh;
     background-color: transparent;
     z-index: 2;
     position: absolute;
