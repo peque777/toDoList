@@ -32,12 +32,7 @@ button{
 .okBtn{
     background-color: #29b354;
 }
-#addTaskBtn{
-    width: 5vh;
-    height: 5vh;
-    border: none;
-    margin-right: 5vw;
-}
+
 button:hover{
     background-color: hsl(208, 98%, 50%);
 }
@@ -64,18 +59,25 @@ input{
     display: flex;
     justify-content: center;
 }
-#containerAddTaskBtn{
-    bottom: 0%;
-    width: 80vw;
-    height: 5vh;
-    display: flex;
-    flex-direction: row-reverse;
-    padding-bottom: 2.5vh;
-    background-color: transparent;
-    z-index: 2;
+#containerAddTaskBtn {
     position: absolute;
-    margin-bottom: 10vh;
+    bottom: 2vh;
+    right: 2vh;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
 }
+
+#addTaskBtn {
+    width: 5vh;
+    height: 5vh;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
 #taskListContainer{
     height: 100%;
     overflow-y: auto;
@@ -87,6 +89,7 @@ input{
     background-color: black;
     border-radius: 50px;
     justify-self: center;
+    position: relative;
 }
 #taskGeneratorContainer{
     position: absolute;
