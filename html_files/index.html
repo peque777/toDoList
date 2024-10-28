@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="../css_files/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<link rel="icon" href="./appIcon.png">
+</head>
+<body>
+    <h1>To do list</h1>
+
+    <!-- Contenedor principal de tareas pendientes -->
+    <div id="containerTasks">
+        <div id="tasks">
+            <div id="taskListContainer"><p id="taskList"></p></div>
+            <div id="containerAddTaskBtn">
+                <button class="homepageBtn" id="addTaskBtn" onclick="showTaskGenerator()">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div id="containerHomepageBtn">
+        <button class="homepageBtn" id="previousTasksBtn">Previous tasks</button>
+        
+    </div>
+
+    <!-- Contenedor de la sección de tareas completadas (inicialmente oculto) -->
+    <div id="completedTasksContainer" style="display: none;">
+        <div id="completedTasks">
+            <h3>Completed tasks</h3>
+            <hr>
+            <p id="completedTaskList"></p>
+        </div>
+        <button id="backBtn" class="homepageBtn" onclick="goBackToMain()">Back</button>
+    </div>
+
+    <!-- Contenedor del generador de tareas -->
+    <div id="taskGeneratorContainer" class="containerBtn">
+        <div id="taskGenerator">
+            <h1>Add task</h1>
+            <div id="containerTaskGeneratorInput">
+                <input type="text" id="taskNameInput" placeholder="Task name">
+                <input type="date" id="dateInput" placeholder="Due date">
+            </div>
+            <p id="noInput"></p>
+            <div id="containerTaskGeneratorBtn" class="containerBtn">
+                <button onclick="hideTaskGenerator()" class="cancelBtn">Cancel</button>
+                <button onclick="addTask()" class="okBtn">Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js_files/main.js"></script>
+</body>

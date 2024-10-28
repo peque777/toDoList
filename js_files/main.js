@@ -24,9 +24,34 @@ function hideTaskGenerator() {
     taskGenerator.style.display = "none";
 }
 
+function formatDate(dateString) {
+    let date = new Date(dateString);
+    let day = String(date.getDate()).padStart(2, '0');
+    let month = String(date.getMonth() + 1).padStart(2, '0');
+    let year = String(date.getFullYear()).slice(-2);
+    return `${day}/${month}/${year}`;
+}
+
+function calculateDaysUntil(dateString) {
+    const inputDate = new Date(dateString); 
+    const today = new Date(); 
+
+    inputDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    
+    const diffInMs = inputDate - today;
+    const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
+    
+    return diffInDays;
+}
+
 function addTask() {
     if (taskNameInput.value && dateInput.value) {
-        taskList.innerHTML += '<p>' + taskNameInput.value + " due date: " + dateInput.value + 
+        const daysUntil = calculateDaysUntil(dateInput.value);
+        const dueDateText = daysUntil > 0 ? `faltan ${daysUntil} días` : daysUntil === 0 ? "vence hoy" : "ya pasó";
+        
+        taskList.innerHTML += `<p class="taskNameEl">${taskNameInput.value} (${dueDateText})</p>` +
+            `<p class="dueDateEl"> due date: ${formatDate(dateInput.value)}` + 
             '<button class="taskFinishedBtn" onClick="finishTask(event)">✔</button></p> <hr>';
         
         taskNames.push(taskNameInput.value);
@@ -115,7 +140,12 @@ function showCompletedTasks() {
     
     if (completedTasks.length > 0) {
         for (let i = 0; i < completedTasks.length; i++) {
-            completedTaskList.innerHTML += '<p>' + completedTasks[i].name + ' Due date: '+completedTasks[i].date+'<button class="reAddFinishedTaskBtn" onClick="reAddTask('+i+')">Add to task list</button></p> <hr>';
+            const daysUntil = calculateDaysUntil(completedTasks[i].date);
+            const dueDateText = daysUntil > 0 ? `faltan ${daysUntil} días` : daysUntil === 0 ? "vence hoy" : "ya pasó";
+            
+            completedTaskList.innerHTML += `<p class="taskNameEl">${completedTasks[i].name} (${dueDateText})</p>` +
+                `<p class="dueDateEl"> Due date: ${formatDate(completedTasks[i].date)}` +
+                `<button class="reAddFinishedTaskBtn" onClick="reAddTask(${i})">Add to task list</button></p> <hr>`;
         }
     } else {
         completedTaskList.innerHTML = '<p>No completed tasks</p>';
@@ -124,7 +154,11 @@ function showCompletedTasks() {
 
 function reAddTask(index) {
     let task = completedTasks[index];
-    taskList.innerHTML += '<p>' + task.name + " due date: " + task.date + 
+    const daysUntil = calculateDaysUntil(task.date);
+    const dueDateText = daysUntil > 0 ? `faltan ${daysUntil} días` : daysUntil === 0 ? "vence hoy" : "ya pasó";
+
+    taskList.innerHTML += `<p class="taskNameEl">${task.name} (${dueDateText})</p>` +
+        `<p class="dueDateEl"> due date: ${formatDate(task.date)}` + 
         '<button class="taskFinishedBtn" onClick="finishTask(event)">✔</button></p> <hr>';
 
     taskNames.push(task.name);
@@ -152,7 +186,11 @@ function getSavedTasks() {
     if (savedTaskNames.length > 0) {
         taskList.innerHTML = "";
         for (let i = 0; i < savedTaskNames.length; i++) {
-            taskList.innerHTML += '<p>' + savedTaskNames[i] + " due date: " + savedDates[i] + 
+            const daysUntil = calculateDaysUntil(savedDates[i]);
+            const dueDateText = daysUntil > 0 ? `faltan ${daysUntil} días` : daysUntil === 0 ? "vence hoy" : "ya pasó";
+
+            taskList.innerHTML += `<p class="taskNameEl">${savedTaskNames[i]} (${dueDateText})</p>` +
+                `<p class="dueDateEl"> due date: ${formatDate(savedDates[i])}` +
                 '<button class="taskFinishedBtn" onClick="finishTask(event)">✔</button></p> <hr>';
         }
     } else {
@@ -160,7 +198,8 @@ function getSavedTasks() {
     }
 }
 
-setInterval(checkDueDates, 10000 ); //12hs
+setInterval(checkDueDates, 43200000); // 12 horas
 
 getSavedTasks();
+
 

@@ -7,9 +7,9 @@ body{
     display: flex;
     align-content: center;
     flex-direction: column;
-    background: linear-gradient(#0267C1,#30C5FF);
+    background: linear-gradient(hsl(0,0%,20%),hsl(0,0%,10%));
     font-family: "Oswald", sans-serif;
-    overflow-y: auto;
+    color: white;
 }
 hr{
     width: 70vw;
@@ -18,23 +18,39 @@ hr{
 button{
     width: 40vw;
     height: 5vh;
-    background-color: #0267C1;
+    background-color: white;
     border: 2px solid black;
     border-radius: 2.5vh;
     transition: ease-in-out, 0,5s;
+    font-size: large;
+    font-weight: 600;
+}
+.cancelBtn{
+    background-color: red;
+    color: white;
+}
+.okBtn{
+    background-color: #29b354;
+}
+#addTaskBtn{
+    width: 5vh;
+    height: 5vh;
+    border: none;
+    margin-right: 5vw;
 }
 button:hover{
     background-color: hsl(208, 98%, 50%);
 }
 input{
     width: 70vw;
+    height: 2.5vh;
     align-self: center;
     text-align: center;
-    border-radius: 5px;
+    border:none;
+    border-radius: 2.5vh;
     border: 1px solid black;
-    background: linear-gradient(to right,#5C946E,#80C2AF) !important;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .containerBtn{
     display:flex;
@@ -48,28 +64,42 @@ input{
     display: flex;
     justify-content: center;
 }
+#containerAddTaskBtn{
+    bottom: 0%;
+    width: 80vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 30px;
+    background-color: transparent;
+    z-index: 2;
+    position: absolute;
+    margin-bottom: 10vh;
+}
+#taskListContainer{
+    height: 100%;
+    overflow-y: auto;
+}
 #tasks{
     max-height: 80vh;
     min-height: 10vh;
     width: 80vw;
-    background: linear-gradient(#A0DDE6,#80C2AF);
-    border: 2px solid black;
-    border-radius: 20px;
+    background-color: black;
+    border-radius: 50px;
     justify-self: center;
-    overflow-y: auto;
 }
 #taskGeneratorContainer{
     position: absolute;
     width: 100vw;
     height: 100vh;
     z-index: 2;
-    background: linear-gradient(#0267C1,#30C5FF);
+    background: linear-gradient(hsl(0,0%,20%),hsl(0,0%,10%));
     display: none;
 }
 #taskGenerator{
     height: 50vh;
     width: 80vw;
-    background: linear-gradient(#A0DDE6,#80C2AF);
+    background-color: black;
     border-radius: 20px;
     border: 5px solid black;
     align-self: center;
@@ -96,6 +126,7 @@ input{
 .reAddFinishedTaskBtn{
     width: auto;
     height: auto;
+    font-size: medium;
     margin-left: 10px;
     background-color: yellow;
     border: 2px solid black;
@@ -113,7 +144,7 @@ input{
 #completedTasks{
     height: 80vh;
     width: 80vw;
-    background: linear-gradient(#A0DDE6,#80C2AF);
+    background-color: black;
     border: 2px solid black;
     border-radius: 20px;
     justify-self: center;
@@ -121,4 +152,11 @@ input{
 }
 #backBtn{
     margin-top: 5vh;
+}
+.taskNameEl{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.dueDateEl{
+    color: hsl(0, 0%, 60%);
 }
