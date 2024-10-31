@@ -126,6 +126,25 @@ input{
     background-color: #29b354;
     border: 2px solid black;
 }
+.pinTaskBtn{
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+}
+.deleteTaskBtn{
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+    background-color: transparent;
+    border: none; 
+    color: hsl(0, 0%, 60%);
+    font-size:large;
+}
+.pinTaskBtn:hover, .deleteTaskBtn:hover{
+background-color: hsl(0, 0%, 50%);
+}
 .reAddFinishedTaskBtn{
     width: auto;
     height: auto;
@@ -162,4 +181,5 @@ input{
 }
 .dueDateEl{
     color: hsl(0, 0%, 60%);
+    display: inline-block;
 }
